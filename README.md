@@ -22,6 +22,15 @@ console.log( "hoge" === new String("hoge") ); // false
 * NaNもNumber型
 * NaNの判定はisNaN()
 
+```
+console.log(isNaN(0)); // false 0
+console.log(isNaN('0')); // false 0
+console.log(isNaN('')); // false 0
+console.log(isNaN('hoge')); // true
+console.log(isNaN(undefined)); // true
+console.log(isNaN(null)); // false 0
+```
+
 ### call/apply
 
 call/applyによって、thisが指すオブジェクトを変更できる
