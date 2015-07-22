@@ -16,6 +16,12 @@ console.log( "hoge" == new String("hoge") ); // true
 console.log( "hoge" === new String("hoge") ); // false
 ```
 
+### NaN
+
+* Not a Number
+* NaNもNumber型
+* NaNの判定はisNaN()
+
 ### call/apply
 
 call/applyによって、thisが指すオブジェクトを変更できる
@@ -86,6 +92,13 @@ var Dog = function(_name) {
 Dog.prototype.show = function() {
 	alert(this.name);
 };
+```
+
+継承
+
+```
+var MyClass3 = function(){};
+MyClass3.prototype = new MyClass();
 ```
 
 ## WebブラウザにおけるJavaScript API
