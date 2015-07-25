@@ -31,9 +31,24 @@ console.log(isNaN(undefined)); // true
 console.log(isNaN(null)); // false 0
 ```
 
+## ラジアン
+
+360度 = 2 * Math.PI 
+
+## with
+
+```
+with(Math) {
+	var r = 90;
+  var x = round( sin(r / 180 * PI) * 10 ) / 10;
+}
+```
+
 ### call/apply
 
 call/applyによって、thisが指すオブジェクトを変更できる
+
+#### call
 
 ```
 var obj1 = {
@@ -46,6 +61,39 @@ var obj2 = {
 	name: "fuga"
 };
 obj1.func.call(obj2); //obj1.func()を、obj2をthisとして実行
+```
+
+#### callとapplyの違い
+
+call()はカンマ区切り、apply()は配列でメソッドの引数を渡す
+
+```
+var obj1 = {
+  name: "わたし",
+  showName: function(msg1, msg2) {
+    console.log(this.name + msg1 + msg2);
+  }
+};
+var obj2 = {
+  name: "ぼく"
+};
+obj1.showName.call(obj2, "こんにちは", "よろしくね");
+obj1.showName.apply(obj2, ["こんにちは", "よろしくね"]);
+```
+
+#### call/applyの利用シーン
+
+配列のような構造だがArrayオブジェクトではないオブジェクトから、Arrayオブジェクトが持つjoinメソッドを利用する例
+
+```
+var obj= {
+  "0": "aaa",
+  "1": "bbb",
+  "2": "ccc",
+  length: 3
+};
+// Arrayオブジェクトのjoinメソッドを借りる
+var str= Array.prototype.join.call(obj, "+");
 ```
 
 ### ホイスティング（変数の巻き上げ）
@@ -87,9 +135,24 @@ func(); // 1
 func(); // 2
 ```
 
+### クラスとコンストラクタ
+
+インスタンス＝Objectオブジェクト
+プロトタイプオブジェクトはFunction型だが、インスタンスはObject型となる
+
+```
+var Dog = function(_name) {
+// 省略
+};
+var dog1 = new Dog("ポチ");
+console.log(typeofDog); // function
+console.log(typeofdog1);// object
+```
+
 ### プロトタイプ
 
 各インスタンスで共通のメソッドはprototypeプロパティに登録する
+(各インスタンスが内部的に持つ__proto__プロパティから元のオブジェクトのprototypeプロパティを参照する)
 
 ```
 var Dog = function(_name) {
@@ -110,8 +173,134 @@ var MyClass3 = function(){};
 MyClass3.prototype = new MyClass();
 ```
 
-## WebブラウザにおけるJavaScript API
+# WebブラウザにおけるJavaScript API
+
 ## イベント ★★★★★★★★ 8
+
+### イベントハンドラ
+
+`<button onclick='func();'>`のように使う。
+
+#### フォーム
+
+* onfocus
+* onblur
+* onselect
+* onchange
+* onformchange
+* onforminput
+* oninput
+* onsubmit
+* oncontextmenu
+* oninvalic
+
+#### キーボード
+
+* onkeydown
+* onkeyup
+* onkeypress
+
+#### マウス
+
+* onclick
+* ondblclick
+* onmousedown
+* onmouseup
+* onmousemove
+* onmouseover
+* onmouseout
+* onmousewheel
+* onscroll
+
+#### ドラッグ&ドロップ
+
+* ondrag
+* ondragstart
+* ondragend
+* ondragenter
+* ondragleave
+* ondragover
+* ondragdrop
+
+### イベントハンドラ
+
+`document.getElementById('hoge').addEventListener('event', func());`のように使う。
+
+#### キーボード
+
+* input
+* keydown
+* keyup
+* keypress
+
+#### マウス
+
+* mousedown
+* mouseup
+* mousemove
+* mouseover
+* mouseout
+* mousewheel
+* scroll
+* click
+
+#### ドラッグ&ドロップ
+
+* drag
+* dragstart
+* dragend
+* dragenter
+* dragleave
+* dragover
+* dragdrop
+
+#### タッチ
+
+`e.touches[i].clientX`のように処理。
+iが指の何本目か、clientX, clientYでxy座標をとる。
+
+* touchmove
+* touchstart
+* touchend
+
+```
+x.addEventListener('touchmove', function(e){
+	e.preventDefault(); // 画面上をスライドしてもブラウザが移動しないように
+	var rect = e.target.getBoundingClientRect(); // 現在位置
+	var xMove = e.touches[0].clientX - rect.left;
+  var yMove = e.touches[0].clientY - rect.top;
+});
+```
+
+#### 加速度
+
+```
+window.addEventListener('devicemotion', function(e){
+	var x = e.accelerationIncludingGravity.x;
+	var y = e.accelerationIncludingGravity.y;
+	var z = e.accelerationIncludingGravity.z;
+});
+```
+
+#### 回転
+
+```
+window.addEventListener('orientationchange', function(){
+	console.log( window.orientation );
+});
+```
+
+### バリデーション
+
+* required：<input type="text" required>
+* pattern：<input type="text" pattern="^[0-9]{3}-[0-9]{4}$">
+* min/max<input type="number" min="18" max="99">
+* maxlength：<input type="text" maxlength="6">
+
+```
+x.addEventListener('invalid', func);
+```
+
 ## ドキュメントオブジェクト／DOM ★★★★★★ 6
 ## ウィンドウオブジェクト ★★★★★★★★ 8
 ## Selectors API ★★★★ 4
