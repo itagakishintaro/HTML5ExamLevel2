@@ -302,6 +302,58 @@ x.addEventListener('invalid', func);
 ```
 
 ## ドキュメントオブジェクト／DOM ★★★★★★ 6
+
+### セレクタ
+
+* document.getElementById()
+* document.getElementsByTagName()
+* document.getElementsByClassname()
+
+### スタイル
+
+ハイフンをCamelCaseにかえるのがポイント
+
+```
+elm.style.fontSize = '100px';
+```
+
+### 要素の親および子要素の取得
+
+* parentNode
+* previousSibling
+* nextSibling
+* firstChild
+* lastChild
+
+### 要素の表示、非表示制御
+
+* visibility = 'visible' / 'hidden'
+* display = 'block' / 'none'
+
+### 要素の上書き
+
+* elm.innerHTML = '<tag>hoge</tag>;
+* elm.innerText = 'hoge';
+
+### 要素の挿入、削除
+
+* createElement()
+* insertBefore()
+* appendChild()
+
+### 属性の追加、取得、削除
+
+* createAttribute()
+* hasAttribute()
+* removeAttribute()
+* setAttributeNode()
+
+### フォームのデータにアクセスおよび、入力値の検証
+
+```
+<form action="..." onsubmit="return check();" method="post"></form>
+```
+
 ## ウィンドウオブジェクト ★★★★★★★★ 8
 ## Selectors API ★★★★ 4
 ## テスト・デバッグ ★★ 2
