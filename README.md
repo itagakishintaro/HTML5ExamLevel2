@@ -355,6 +355,106 @@ elm.style.fontSize = '100px';
 ```
 
 ## ウィンドウオブジェクト ★★★★★★★★ 8
+
+### プロパティ
+
+#### ウィンドウ
+
+* .name
+* .closed
+* .innerHeight
+* .innerWidth
+* .outerHeight
+* .outerWidth
+* .pageXOffset
+* .pageYOffset
+
+#### 親子関係
+
+* .parent
+* .top
+* .self
+* .opener
+
+#### 画面
+
+* .screen
+* .screenLeft
+* .screenTop
+* .screenX
+* .screenY
+
+#### ブラウザ
+
+* .navigator
+* .history
+* .location
+* .document
+* .status
+* .defaultStatus
+
+#### フレーム
+
+* .frames
+* .length
+
+#### ストレージ
+
+* .localStorage
+* .sessionStorage
+
+### メソッド
+
+#### ウィンドウ操作
+
+* open()
+* close()
+* resizeBy()
+* resizeTo()
+
+#### 表示関係
+
+* alert()
+* confirm()
+* createPopup()
+* prompt()
+* print()
+
+#### 移動関係
+
+* moveBy()
+* moveTo()
+* scrollBy()
+* scrollTo()
+
+#### フォーカス
+
+* focus()
+* blur()
+
+#### タイマー
+
+* setInterval()
+* clearInterval()
+* setTimeout()
+* clearTimeout()
+
+### postMessageを利用したメッセージ送信とイベント処理
+
+window間で、安全にクロスドメイン通信できる。
+
+```送信側
+var otherWindow = window.open(url, 'post', 'target=_blank');
+otherWindow.postMessage(message, url);
+```
+
+```受信側
+window.addEventListener('message', function(e){
+	console.log(e.data);
+});
+
+```
+
 ## Selectors API ★★★★ 4
 ## テスト・デバッグ ★★ 2
 
