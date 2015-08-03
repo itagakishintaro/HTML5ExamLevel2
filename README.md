@@ -895,6 +895,57 @@ objectStoreはテーブルのようなもの
 
 ## File API ★★ 2
 
+参考:http://www.html5rocks.com/ja/tutorials/file/dndfiles/
+
+```
+<input type="file" id="files" name="files[]" multiple />
+<output id="list"></output>
+
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate.toLocaleDateString(), '</li>');
+    }
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+```
+
+### FileListオブジェクト
+
+* プロパティ: length
+* メソッド: item()
+
+### Blobオブジェクト
+
+* プロパティ: size, type
+* メソッド: slice(), close()
+
+### Fileオブジェクト
+
+* プロパティ: name, lastModifiedDate
+
+### FileReaderオブジェクト
+
+```
+var reader = new FileReader();
+reader.readAsText(file, 'utf-8');
+reader.addEventListener('load', function(){
+  console.log(reader.result);
+});
+```
+
+* プロパティ: readyState, result, error
+* メソッド: readAsArrayBuffer(), readAsText(), readAsDataURL(), abort()
+
 # 通信
 ## WebSocket ★★ 2
 ## XMLHttpRequest ★★★★ 4
