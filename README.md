@@ -760,7 +760,139 @@ search|? 記号に続く URL の部分。? 記号も含みます。|?q=devmo
 
 # ストレージ
 ## Web Storage ★★★★ 4
+
+### localStorageオブジェクト,sessionStorageオブジェクト
+
+localStorageはブラウザを閉じても残る。sessionStorageはブラウザを閉じると消える。
+
+### メソッド
+
+* key(n)
+* setItem(key, value)
+* getItem(key)
+* removeItem(key)
+* clear()
+
+### StorageEventオブジェクト
+
+Storageを更新した場合、Storageを更新したドキュメント以外の、同じStorage領域を持ってるドキュメントでStorageEventが発火する。
+
+```
+window.addEventListener('storage', function(e) {
+  console.log(e);
+}, false);
+```
+
+#### イベントのプロパティ
+
+* key
+* oldValue
+* newValue
+* url
+* storageArea
+
 ## Indexed Database API ★★ 2
+
+### IDBFactoryオブジェクト
+
+```
+var indexedDB = window.indexedDB;
+var req = indexedDB.open('mydb', 1.0);
+indexedDB.deleteDatabase('mydb');
+```
+
+### IDBRequestオブジェクト
+
+```
+var db;
+var indexedDB = window.indexedDB;
+var req = indexedDB.open('mydb', 1.0);
+
+// DB変更時
+req.onupgradeneeded = function(e){
+  db = e.target.result;
+  var store = db.createObjectStore('mystore', {keyPath: 'mykey'});
+  store.createIndex('myvalueIndex', 'myvalue'); // インデックス生成
+}
+
+// DBオープン成功時
+req.onsuccess = function(e){
+  db = e.target.result;
+}
+
+// トランザクション
+var transaction = db.transaction(['mystore'], 'readwrite');
+var store = transaction.objetStore('mystore');
+
+// 登録・更新
+var request = store.put({ mykey: key, myvalue: value });
+request.onsuccess = function(){ console.log('success'); }
+
+// 参照
+var request = store.get(key);
+request.onsuccess = function(e){ console.log(e.target.result); }
+
+// 削除
+var request = store.delete(key);
+request.onsuccess = function(){ console.log('deleted'); }
+```
+
+#### プロパティ
+
+* result
+* error
+* source
+* transaction
+* readyState
+
+#### イベント
+
+* onsuccess
+* onerror
+
+### IDBDatabaseオブジェクト
+
+objectStoreはテーブルのようなもの
+
+```
+// https://developer.mozilla.org/ja/docs/Web/API/IDBDatabase
+  DBOpenRequest.onupgradeneeded = function(event) {
+    var db = event.target.result;
+    
+    db.onerror = function(event) {
+      note.innerHTML += '<li>Error loading database.</li>';
+    };
+
+    // Create an objectStore for this database using IDBDatabase.createObjectStore
+    
+    var objectStore = db.createObjectStore("toDoList", { keyPath: "taskTitle" });
+    
+    // define what data items the objectStore will contain
+    
+    objectStore.createIndex("hours", "hours", { unique: false });
+    objectStore.createIndex("minutes", "minutes", { unique: false });
+    objectStore.createIndex("day", "day", { unique: false });
+    objectStore.createIndex("month", "month", { unique: false });
+    objectStore.createIndex("year", "year", { unique: false });
+
+    objectStore.createIndex("notified", "notified", { unique: false });
+    
+    note.innerHTML += '<li>Object store created.</li>';
+```
+
+#### プロパティ
+
+* name
+* version
+* objectStoreNames
+
+#### メソッド
+
+* createObjectStore()
+* deleteObjectStore()
+* transaction()
+* close()
+
 ## File API ★★ 2
 
 # 通信
