@@ -1054,15 +1054,129 @@ xhr.ontimeout = function () {
 # Geolocation API
 ## Geolocation APIの基本と位置情報の取得 ★★ 2
 
+```
+var geolocation = navigator.geolocation;
+```
+
+### Positionオブジェクト
+
+```
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0 // キャッシュを保有するミリ秒
+};
+navigator.geolocation.getCurrentPosition(success, error, options);
+```
+
+### プロパティ（cords）
+
+#### Coordinates オブジェクト
+
+```
+function success(position) {
+  console.log(position.coords.latitude); // 緯度
+  console.log(position.coords.longitude); // 経度
+  console.log(position.coords.accuracy); // 緯度経度の精度
+  console.log(position.coords.altitude); // 高度
+  console.log(position.coords.altitudeAccuracy); // 高度の精度
+  console.log(position.coords.heading); // 方向
+  console.log(position.coords.speed); // 速度
+}
+```
+
+### Geolocationオブジェクト
+
+#### メソッド
+
+* getCurrentPosition()
+* watchPosition()
+* clearWatch()
+
+#### errorプロパティ
+
+* error.code
+* error.message
+
 # Web Workers
+
 ## 並列処理の記述 ★★★★ 4
 
+### Workerオブジェクト
+
+参考:http://www.html5rocks.com/ja/tutorials/workers/basics/
+
+#### メソッド
+
+```
+var worker = new Worker('task.js');
+worker.postMessage('message');
+worker.terminate();
+```
+
+#### イベント
+
+```
+worker.onerror = function(e) {
+  console.log(e.message);
+  console.log(e.filename);
+  console.log(e.lineno);
+}
+
+worker.onmessage = function(e){
+  console.log(e.data);
+}
+```
+
 # パフォーマンス
+
 ## Navigation Timing ★★★★ 4
+
+### PerformanceTimingオブジェクト
+
+```
+var timing = window.performance.timing;
+```
+
+### プロパティ
+
+* navigationStart
+* unloadEventStart
+* unloadEventEnd
+* redirectStart
+* redirectEnd
+* fetchStart
+* domainLookupStart
+* domainLookupEnd
+* connectStart
+* connectEnd
+* secureConnectionStart
+* requestStart
+* responseStart
+* responseEnd
+* domLoading
+* domInteractive
+* domContentLoadedEventStart
+* domContentLoadedEventEnd
+* domComplete
+* loadEventStart
+* loadEventEnd
+
+### PerformanceNavigationオブジェクト
+
+```
+var type = window.performance.navigation.type;
+```
+
+* 0: TYPE_NAVIGATE
+* 1: TYPE_RELOAD
+* 2: TYPE_BACK_FORWARD
+* 255: TYPE_RESERVED
+
 ## High Resolution Time ★ 1
 
+ページを開いた時刻からnow()を起動したときまでの時刻をナノ秒の高精度で取得できる。
 
-
-
-
-
+```
+window.performance.now();
+```
