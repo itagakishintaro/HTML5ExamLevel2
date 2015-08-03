@@ -700,6 +700,32 @@ console.log(window.applicationCache);
 # Session History and Navigation
 ## History API ★★★ 3
 
+### Historyオブジェクト
+
+* history.length()
+* history.back()
+* history.forward()
+* history.go(N)
+* history.pushState(state, title, URL)
+* history.replaceState(state, title, URL)
+
+### Locationオブジェクト
+
+https://developer.mozilla.org/ja/docs/Web/API/Window/location
+
+例) http://www.google.com:80/search?q=devmo#test
+
+プロパティ|説明|例
+---|---|---
+hash|# 記号に続くURL の部分。|#test
+host|ホスト名とポート番号。|www.google.com:80
+hostname|ホスト名（ポート番号を含まない）。|www.google.com
+href|完全な URL。|http://www.google.com:80/search?q=devmo#test
+pathname|パス（ホストからの相対）。|/search
+port|URL のポート番号。|80
+protocol|URL のプロトコル|http:
+search|? 記号に続く URL の部分。? 記号も含みます。|?q=devmo
+
 # 表示制御
 ## Page Visibility ★★ 2
 ## Timing control for script-based animations ★★ 2
