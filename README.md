@@ -737,7 +737,26 @@ search|? 記号に続く URL の部分。? 記号も含みます。|?q=devmo
 
 # 表示制御
 ## Page Visibility ★★ 2
+
+### プロパティ
+
+* document.hidden
+* visibilityState
+  - visible
+  - hidden
+  - prerender
+
+### イベント
+
+* visibilitychange
+
 ## Timing control for script-based animations ★★ 2
+
+ブラウザの負荷状況によって最適なタイミングで開始。
+ページがバックグラウンドにあると速度が低くなる。
+
+* Window.requestAnimationFrame()
+* window.cancelAnimationFrame()
 
 # ストレージ
 ## Web Storage ★★★★ 4
