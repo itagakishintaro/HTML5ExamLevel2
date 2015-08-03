@@ -462,6 +462,63 @@ window.addEventListener('message', function(e){
 ## Canvas(2D) ★★★★★★ 6
 ## SVG ★ 1
 
+### 円
+
+```
+<svg width="500" height="200">
+  <circle cx="50" cy="50" r="50" fill="skyblue" stroke="black" stroke-width="1" />
+</svg>
+```
+
+### 楕円
+
+```
+<svg width="500" height="200">
+  <ellipse cx="50" cy="50" rx="50" ry="30" fill="skyblue" stroke="black" stroke-width="1" />
+</svg>
+```
+
+### 直線
+
+```
+<svg width="500" height="200">
+  <line x1="10" y1="30" x2="100" y2="300" stroke="black" stroke-width="1" />
+</svg>
+```
+
+### 矩形
+
+```
+<svg width="500" height="200">
+  <rect x="10" y="100" width="200" height="50" rx="5" ry="5" fill="none" stroke="blue" stroke-width="3" />
+</svg>
+```
+
+### 文字
+
+```
+<svg width="500" height="200">
+  <text x="10 30 50" y="40 30 50" font-size="30" fill="red" stroke="none">SVG</text>
+</svg>
+```
+
+### 連続直線
+
+```
+<svg width="500" height="200">
+  <polyline points="200,150,250,180,300,150,350,100" fill="none" stroke="red" stroke-width="2" />
+</svg>
+```
+
+### 多角形
+
+```
+<svg width="500" height="200">
+  <polygon points="200,150,250,180,300,150,350,100" fill="pink" stroke="red" stroke-width="2" />
+</svg>
+```
+
+
 # マルチメディア
 ## video要素,audio要素 ★★ 2
 
