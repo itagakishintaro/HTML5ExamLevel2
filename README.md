@@ -711,6 +711,8 @@ console.log(window.applicationCache);
 
 ### Locationオブジェクト
 
+#### プロパティ
+
 https://developer.mozilla.org/ja/docs/Web/API/Window/location
 
 例) http://www.google.com:80/search?q=devmo#test
@@ -725,6 +727,13 @@ pathname|パス（ホストからの相対）。|/search
 port|URL のポート番号。|80
 protocol|URL のプロトコル|http:
 search|? 記号に続く URL の部分。? 記号も含みます。|?q=devmo
+
+#### メソッド
+
+* assign()
+* replace()
+* reload()
+* toString()
 
 # 表示制御
 ## Page Visibility ★★ 2
