@@ -980,18 +980,76 @@ ws.onmessage = function(e){ console.log(e.data); }
 
 ## XMLHttpRequest ★★★★ 4
 
-XMLHttpRequest　オブジェクト
-リクエスト/レスポンス共通
-プロパティ(readyState)
-イベント（onreadystatechange）
-リクエスト関連
-メソッド(open(),setRequestHeader(),send(),abort())
-プロパティ(timeout, withCredentials, upload)
-レスポンス処理
-メソッド(getResponseHeader(), getAllResponseHeaders(), overrideMimeType())
-プロパティ(status, statusText, responseType, response, responseText, responseXML)
-XMLHttpRequestEventTarget　Interface
-イベント（onloadstart,onprogress,onabort,onerror,onload,ontimeout,onloadend）
+参考:https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest
+
+レベル1と2があり、レベル2ではクロスドメイン通信、バイナリデータ送受信、MIMEタイプ設定、進捗状況、タイムアウト指定ができる。
+
+### XMLHttpRequest　オブジェクト
+
+```
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'ajax.txt');
+xhr.onreadystatechange = function(){
+  if(xhr.readyState === 4){
+    console.log(xhr.responseText);
+  }
+}
+xhr.ontimeout = function () {
+  console.error('timed out.');
+};
+```
+
+* プロパティ: readyState
+  - 0: 初期化されていない
+  - 1: sendされていない
+  - 2: send実行中
+  - 3: 応答受信中
+  - 4: 受信済み
+* イベント: onreadystatechange
+
+### リクエスト関連
+
+#### メソッド
+
+* open(method, url, [optional] boolean async, [optional] user, [optional] password)
+* setRequestHeader(header, value)
+* void send([optional] body)
+* abort()
+
+#### プロパティ
+
+* timeout
+* withCredentials: boolean
+* upload: イベントリスナー
+
+### レスポンス処理
+
+#### メソッド
+
+* getResponseHeader(header)
+* getAllResponseHeaders()
+* overrideMimeType(mimetype)
+
+#### プロパティ
+
+* status
+* statusText
+* responseType
+* response
+* responseText
+* responseXML
+
+### XMLHttpRequestEventTarget　Interface
+
+#### イベント
+
+* onloadstart
+* onprogress
+* onabort
+* onerror
+* onload
+* ontimeout
+* onloadend
 
 # Geolocation API
 ## Geolocation APIの基本と位置情報の取得 ★★ 2
