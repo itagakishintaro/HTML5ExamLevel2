@@ -948,7 +948,50 @@ reader.addEventListener('load', function(){
 
 # 通信
 ## WebSocket ★★ 2
+
+```
+var ws = new WebSocket('ws://hoge');
+ws.onopen = function(e){ ws.send('message'); }
+ws.onmessage = function(e){ console.log(e.data); }
+//ws.close();
+```
+
+### メソッド
+
+* send()
+* close()
+
+### プロパティ
+
+* URL
+* readyState
+  - 0: CONNECTING
+  - 1: OPEN
+  - 2: CLOSING
+  - 3: CLOSED
+* bufferedAmount
+
+### イベント
+
+* onopen
+* onmessage
+* onclose
+* onerror
+
 ## XMLHttpRequest ★★★★ 4
+
+XMLHttpRequest　オブジェクト
+リクエスト/レスポンス共通
+プロパティ(readyState)
+イベント（onreadystatechange）
+リクエスト関連
+メソッド(open(),setRequestHeader(),send(),abort())
+プロパティ(timeout, withCredentials, upload)
+レスポンス処理
+メソッド(getResponseHeader(), getAllResponseHeaders(), overrideMimeType())
+プロパティ(status, statusText, responseType, response, responseText, responseXML)
+XMLHttpRequestEventTarget　Interface
+イベント（onloadstart,onprogress,onabort,onerror,onload,ontimeout,onloadend）
 
 # Geolocation API
 ## Geolocation APIの基本と位置情報の取得 ★★ 2
