@@ -592,6 +592,74 @@ window.addEventListener('message', function(e){
 # マルチメディア
 ## video要素,audio要素 ★★ 2
 
+### Audio API
+
+```
+var audio = new Audio;
+audio.src = "audio.mp3";
+``
+
+### Video API
+
+```
+var video = document.getElementById("video");
+video.src = "video.m4v";
+```
+
+### メソッド
+
+* play()
+* pause()
+* load()
+
+### プロパティ
+
+* autoplay
+* controls
+* currenttime: 再生時間
+* duradion: メディアの長さ
+* ended
+* error
+* loop
+* networkState(0:NETWORK_EMPTY, 1:NETWORK_IDLE, 2:NETWORK_LOADING, 3:NETWORK_NO_SOURCE)
+* paused
+* playbackRate
+* played
+* preload
+* readyState(0:HAVE_NOTHING, 1:HAVE_METADATA, 2:HAVE_CURRENT_DATA, 3:HAVE_FUTURE_DATA, 4:HAVE_ENOUGH_DATA)
+* volume
+
+### イベントハンドラ
+
+* onplay
+* onplaying
+* ontime
+* onupdate
+* onpause
+* onwaiting
+* onstalled
+* onended
+* onerror
+* onabort
+
+### Canvas上での動画表示
+
+```
+<video controls="" id="video" width="0" height="0" src="http://sites.lafayette.edu/newquisk/files/2011/08/ken-video.m4v"></video>
+<canvas id="canvas" width="200" height="200"></canvas>
+```
+
+```
+var video = document.getElementById('video');
+var canvas = document.getElementById('canvas');
+
+video.play();
+
+setInterval(function(){
+  canvas.getContext('2d').drawImage(video, 0, 0, 200, 200, 0, 0, 200, 200);
+}, 500);
+```
+
 # オフラインアプリケーションAPI
 ## アプリケーションキャッシュの制御 ★★ 2
 
