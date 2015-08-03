@@ -664,6 +664,39 @@ setInterval(function(){
 # オフラインアプリケーションAPI
 ## アプリケーションキャッシュの制御 ★★ 2
 
+```
+console.log(window.applicationCache);
+```
+
+### プロパティ(status)
+
+* 0: UNCACHED
+* 1: IDLE
+* 2: CHECKING
+* 3: DOWNLOADING
+* 4: UPDATEREADY
+* 5: OBSOLETE
+
+### メソッド
+
+* update()
+* swapCache()
+
+### イベント
+
+* checking
+* error
+* noupdate
+* downloading
+* progress
+* updateready
+* cached
+* obsolete
+
+### Navigatorオブジェクト
+
+* window.navigator.onLine
+
 # Session History and Navigation
 ## History API ★★★ 3
 
