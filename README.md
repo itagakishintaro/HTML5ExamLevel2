@@ -597,7 +597,7 @@ window.addEventListener('message', function(e){
 ```
 var audio = new Audio;
 audio.src = "audio.mp3";
-``
+```
 
 ### Video API
 
