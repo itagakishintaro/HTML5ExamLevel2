@@ -518,6 +518,76 @@ window.addEventListener('message', function(e){
 </svg>
 ```
 
+### 変形
+
+* (100, 50)を中心に30度回転
+* (100, 30)移動
+
+```
+<svg width="500" height="200">
+  <rect x="10" y="100" width="200" height="50" rx="5" ry="5" fill="none" stroke="blue" stroke-width="3" transform="rotate(30, 100,50)" />
+  <rect x="10" y="100" width="200" height="50" rx="5" ry="5" fill="none" stroke="blue" stroke-width="3" transform="translate(100,30)" />
+</svg>
+```
+
+### グラデーション
+
+```
+<svg width="500" height="200">
+  <defs>
+    <linearGradient id="gradient1">
+      <stop offset="0%" stop-color="white" />
+      <stop offset="100%" stop-color="gray" />
+    </linearGradient>
+    <radialGradient id="gradient2">
+      <stop offset="0%" stop-color="white" />
+      <stop offset="100%" stop-color="gray" />
+    </radialGradient>
+  </defs>
+  
+  <circle fill="url(#gradient1)" cx="100" cy="100" r="100" stroke="black" stroke-width="0" />
+    <circle fill="url(#gradient2)" cx="250" cy="100" r="100" stroke="black" stroke-width="0" />
+</svg>
+```
+
+### グループ化
+
+```
+<svg width="500" height="200">
+  <defs>
+    <linearGradient id="gradient1">
+      <stop offset="0%" stop-color="white" />
+      <stop offset="100%" stop-color="gray" />
+    </linearGradient>
+    <radialGradient id="gradient2">
+      <stop offset="0%" stop-color="white" />
+      <stop offset="100%" stop-color="gray" />
+    </radialGradient>
+  </defs>
+  
+  <g transform="rotate(20, 200, 100)">
+    <circle fill="url(#gradient1)" cx="100" cy="100" r="100" stroke="black" stroke-width="0" />
+    <circle fill="url(#gradient2)" cx="250" cy="100" r="100" stroke="black" stroke-width="0" />
+  </g>
+</svg>
+```
+
+### アニメーション
+
+```
+<svg width="500" height="200">
+  <circle cx="100" cy="100" r="100" fill="blue" stroke="black" stroke-width="0">
+    <animate
+      attributeType="xml"
+      attributeName="cx"
+      begin="0s"
+      dur="5s"
+      values="0;400;0"
+      repeatCount="infinite"
+    />
+  </circle>
+</svg>
+```
 
 # マルチメディア
 ## video要素,audio要素 ★★ 2
