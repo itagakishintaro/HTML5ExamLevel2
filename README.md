@@ -684,6 +684,7 @@ ctx.fill();
 
 ### 合成
 
+参考:http://www.htmq.com/canvas/globalCompositeOperation.shtml  
 souce: 前に書いた図  
 destination: 後に書いた図
 
