@@ -98,8 +98,8 @@ var str= Array.prototype.join.call(obj, "+");
 
 ### ホイスティング（変数の巻き上げ）
 
-* 関数の途中で宣⾔された変数は、関数の先頭に巻き上げて宣言される
-* ただし、初期値として代⼊されている値は巻き上げない
+* 関数の途中で宣言された変数は、関数の先頭に巻き上げて宣言される
+* ただし、初期値として代入されている値は巻き上げない
 
 ```
 var a = "global";
@@ -137,7 +137,7 @@ func(); // 2
 
 ### クラスとコンストラクタ
 
-インスタンス＝Objectオブジェクト
+インスタンス＝Objectオブジェクト  
 プロトタイプオブジェクトはFunction型だが、インスタンスはObject型となる
 
 ```
@@ -145,14 +145,14 @@ var Dog = function(_name) {
 // 省略
 };
 var dog1 = new Dog("ポチ");
-console.log(typeofDog); // function
-console.log(typeofdog1);// object
+console.log(typeof Dog); // function
+console.log(typeof dog1);// object
 ```
 
 ### プロトタイプ
 
 各インスタンスで共通のメソッドはprototypeプロパティに登録する
-(各インスタンスが内部的に持つ__proto__プロパティから元のオブジェクトのprototypeプロパティを参照する)
+(各インスタンスが内部的に持つ`__proto__`プロパティから元のオブジェクトのprototypeプロパティを参照する)
 
 ```
 var Dog = function(_name) {
@@ -356,6 +356,8 @@ elm.style.fontSize = '100px';
 
 ## ウィンドウオブジェクト ★★★★★★★★ 8
 
+参考:https://developer.mozilla.org/ja/docs/Web/API/Window
+
 ### プロパティ
 
 #### ウィンドウ
@@ -368,6 +370,8 @@ elm.style.fontSize = '100px';
 * .outerWidth
 * .pageXOffset
 * .pageYOffset
+
+※pageYOffset プロパティは、scrollY プロパティのエイリアス
 
 #### 親子関係
 
@@ -473,7 +477,20 @@ window.addEventListener('message', function(e){
 * console.trace()
 * console.warn()
 
+```
+// http://blog.asial.co.jp/1054
+console.profile('a');
+console.profile('b');
+hoge();
+console.profileEnd('b');
+console.profile('c');
+fuga();
+console.profileEnd('c');
+console.profileEnd('a');
+```
+
 # グラフィックス
+
 ## Canvas(2D) ★★★★★★ 6
 
 ### コンテキスト
