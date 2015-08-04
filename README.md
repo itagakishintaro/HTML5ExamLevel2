@@ -945,7 +945,15 @@ setInterval(function(){
 ## アプリケーションキャッシュの制御 ★★ 2
 
 ```
+// http://www.html5rocks.com/ja/tutorials/appcache/beginner/
 console.log(window.applicationCache);
+var appCache = window.applicationCache;
+
+appCache.update(); // Attempt to update the user's cache.
+
+if (appCache.status == window.applicationCache.UPDATEREADY) {
+  appCache.swapCache();  // The fetch was successful, swap in the new cache.
+}
 ```
 
 ### プロパティ(status)
