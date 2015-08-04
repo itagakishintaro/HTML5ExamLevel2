@@ -224,7 +224,7 @@ MyClass3.prototype = new MyClass();
 
 ### イベントハンドラ
 
-`document.getElementById('hoge').addEventListener('event', func());`のように使う。
+`document.getElementById('hoge').addEventListener('event', func);`のように使う。
 
 #### キーボード
 
