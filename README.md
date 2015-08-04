@@ -684,7 +684,7 @@ ctx.fill();
 
 ### 合成
 
-souce: 前に書いた図
+souce: 前に書いた図  
 destination: 後に書いた図
 
 * source-over
@@ -739,24 +739,6 @@ for(var i = 0; i < img2.width * img2.height * 4; i++) {
 // 描画
 ctx2.putImageData(img2, 0, 0);
 ```
-
-context.save(),restore()
-context.beginPath()
-context.rect(),clip()
-context.moveTo(),context.lineTo(),context.stroke()
-context.fillRect(),context.strokeRect(),context.clearRect()
-context.arc(),context.arcTo(),context.bezierCurveTo(),context.quadraticCurveTo()
-context.measureText()
-context.fillText(),context.strokeText()
-context.font
-context.setTransform()
-context.rotate()
-context.scale()
-context.translate()
-context.globalAlpha
-context.globalCompositeOperation
-context.drawImage()
-context.createImageData()
 
 ## SVG ★ 1
 
